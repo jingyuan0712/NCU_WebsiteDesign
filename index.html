@@ -1,4 +1,3 @@
-# NCU_WebsiteDesign
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -57,7 +56,7 @@ body{
     gap:20px;
 }
 
-/* Left big image */
+/* Left image */
 .left{
     flex:2;
     position:relative;
@@ -91,6 +90,7 @@ body{
     padding:20px;
     border-radius:20px;
     text-align:center;
+    cursor:pointer;
 }
 
 .map-box img{
@@ -101,6 +101,11 @@ body{
 .box{
     padding:20px;
     border-radius:20px;
+    transition:0.3s;
+}
+
+.box:hover{
+    transform: scale(1.05);
 }
 
 .animal{
@@ -115,6 +120,36 @@ body{
     margin-top:0;
 }
 
+/* Modal */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:999;
+    padding-top:50px;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.8);
+}
+
+.modal-content{
+    margin:auto;
+    display:block;
+    width:80%;
+    max-width:900px;
+    border-radius:10px;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:40px;
+    color:white;
+    font-size:40px;
+    font-weight:bold;
+    cursor:pointer;
+}
 </style>
 </head>
 
@@ -126,13 +161,13 @@ body{
         <div class="header-title">中央大學 生態與保育資訊網</div>
         <div class="header-sub">National Central University Ecological and Conservation Information Website</div>
     </div>
-    <img src="logo.png" width="180">
+    <img src="logo.png" width="120">
 </div>
 
 <!-- Navbar -->
 <div class="nav">
     <a href="#">首頁<br>Home</a>
-    <a href="#">中大生態地圖<br>NCU Ecology Map</a>
+    <a href="#" onclick="openMap()">中大生態地圖<br>NCU Ecology Map</a>
     <a href="#">資源中心<br>Resources</a>
     <a href="#">參與我們<br>Join Us</a>
 </div>
@@ -152,7 +187,7 @@ body{
     <!-- Right -->
     <div class="right">
 
-        <div class="map-box">
+        <div class="map-box" onclick="openMap()">
             <h3>生態地圖</h3>
             <img src="map.png">
         </div>
@@ -178,6 +213,23 @@ body{
     </div>
 
 </div>
+
+<!-- Modal -->
+<div id="mapModal" class="modal">
+    <span class="close" onclick="closeMap()">&times;</span>
+    <img class="modal-content" src="navigation_map.png">
+</div>
+
+<!-- JS -->
+<script>
+function openMap(){
+    document.getElementById("mapModal").style.display = "block";
+}
+
+function closeMap(){
+    document.getElementById("mapModal").style.display = "none";
+}
+</script>
 
 </body>
 </html>
