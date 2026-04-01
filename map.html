@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>中大生態地圖</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="map">
+    <img src="images/navigation_map.png">
+
+    <!-- 🌿 植物 -->
+    <div class="point" style="top:60%; left:40%;" onclick="showInfo('cypress')">
+        <img src="images/plant1.jpg">
+    </div>
+
+    <div class="point" style="top:70%; left:70%;" onclick="showInfo('juniper')">
+        <img src="images/plant2.jpg">
+    </div>
+
+    <div class="point" style="top:65%; left:55%;" onclick="showInfo('paperbark')">
+        <img src="images/plant3.jpg">
+    </div>
+
+    <div class="point" style="top:80%; left:30%;" onclick="showInfo('acacia')">
+        <img src="images/plant4.jpg">
+    </div>
+
+    <div class="point" style="top:50%; left:20%;" onclick="showInfo('cherry')">
+        <img src="images/plant5.jpg">
+    </div>
+
+    <!-- 🐿️ 動物 -->
+    <div class="point" style="top:30%; left:70%;" onclick="showInfo('squirrel')">
+        <img src="images/animal1.jpg">
+    </div>
+
+    <div class="point" style="top:60%; left:60%;" onclick="showInfo('bird')">
+        <img src="images/animal2.jpg">
+    </div>
+
+    <div class="point" style="top:35%; left:50%;" onclick="showInfo('frog')">
+        <img src="images/animal3.jpg">
+    </div>
+
+    <div class="point" style="top:75%; left:10%;" onclick="showInfo('lizard')">
+        <img src="images/animal4.jpg">
+    </div>
+
+    <div class="point" style="top:20%; left:45%;" onclick="showInfo('dragonfly')">
+        <img src="images/animal5.jpg">
+    </div>
+
+</div>
+
+<!-- 側邊資訊 -->
+<div id="panel" class="panel">
+    <span class="close" onclick="closePanel()">✖</span>
+    <div id="content">
+        <h2>點擊地圖查看資訊</h2>
+    </div>
+</div>
+
+<script>
+function showInfo(type){
+
+    let data = {
+
+        squirrel:{
+            name:"赤腹松鼠",
+            img:"images/animal1.jpg",
+            content:`<p>台灣常見松鼠，適應力強。</p>`
+        },
+
+        bird:{
+            name:"台灣藍鵲",
+            img:"images/animal2.jpg",
+            content:`<p>台灣特有種，色彩鮮豔。</p>`
+        },
+
+        frog:{
+            name:"澤蛙",
+            img:"images/animal3.jpg",
+            content:`<p>常見於濕地與水域。</p>`
+        },
+
+        lizard:{
+            name:"斯文豪氏攀蜥",
+            img:"images/animal4.jpg",
+            content:`<p>常在樹幹活動。</p>`
+        },
+
+        dragonfly:{
+            name:"霜白蜻蜓",
+            img:"images/animal5.jpg",
+            content:`<p>水域指標生物。</p>`
+        },
+
+        cherry:{
+            name:"櫻花",
+            img:"images/plant5.jpg",
+            content:`<p>春季盛開，校園景觀植物。</p>`
+        },
+
+        acacia:{
+            name:"相思樹",
+            img:"images/plant4.jpg",
+            content:`<p>耐旱且生長快速。</p>`
+        },
+
+        paperbark:{
+            name:"白千層",
+            img:"images/plant3.jpg",
+            content:`<p>樹皮層狀剝落。</p>`
+        },
+
+        juniper:{
+            name:"龍柏",
+            img:"images/plant2.jpg",
+            content:`<p>常見造景樹。</p>`
+        },
+
+        cypress:{
+            name:"台灣肖楠",
+            img:"images/plant1.jpg",
+            content:`<p>台灣特有珍貴樹種。</p>`
+        }
+    };
+
+    let p = data[type];
+
+    document.getElementById("content").innerHTML = `
+        <h2>${p.name}</h2>
+        <img src="${p.img}">
+        ${p.content}
+    `;
+
+    document.getElementById("panel").classList.add("show");
+}
+
+function closePanel(){
+    document.getElementById("panel").classList.remove("show");
+}
+</script>
+
+</body>
+</html>
